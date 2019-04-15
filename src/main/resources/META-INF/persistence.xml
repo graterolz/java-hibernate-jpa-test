@@ -5,6 +5,9 @@
 
 	<persistence-unit name="Persistencia">
 		<class>hibernate.modelo.Empleado</class>
+		<class>hibernate.modelo.Direccion</class>
+		<class>hibernate.modelo.Autor</class>
+		<class>hibernate.modelo.Libro</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />

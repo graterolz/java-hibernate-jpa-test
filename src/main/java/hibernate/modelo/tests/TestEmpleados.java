@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import hibernate.modelo.Direccion;
 import hibernate.modelo.Empleado;
 
 
@@ -17,6 +18,7 @@ public class TestEmpleados {
 	public static void main(String[] args) {
 		EntityManager man = emf.createEntityManager();
 		Empleado e = new Empleado(10L, "Perez", "Pepito", LocalDate.of(1979, 6, 6));
+		e.setDireccion(new Direccion(15L, "Calle Falsa, 123","Caracas","Caracas","Venezuela"));
 		//
 		man.getTransaction().begin();
 		man.persist(e);
@@ -24,7 +26,7 @@ public class TestEmpleados {
 		man.close();
 		//
 		imprimirTodo();
-		//
+		/*
 		man = emf.createEntityManager();
 		man.getTransaction().begin();
 		e = man.merge(e); 
@@ -33,7 +35,8 @@ public class TestEmpleados {
 		man.getTransaction().commit();
 		man.close();
 		//
-		imprimirTodo();		
+		imprimirTodo();
+		*/
 	}
 	//
 	public static void main2() {

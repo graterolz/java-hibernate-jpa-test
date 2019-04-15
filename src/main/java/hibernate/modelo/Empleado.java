@@ -3,9 +3,12 @@ package hibernate.modelo;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,11 +24,15 @@ public class Empleado implements Serializable {
 	@Column(name = "APELLIDOS")
 	private String apellidos;
 	
-	@Column(name = "NOMRE")
+	@Column(name = "NOMBRE")
 	private String nombre;
 	
 	@Column(name = "FECHA_NACIMIENTO")
 	private LocalDate fechaNacimiento;
+	
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "ID_DIRECCION")
+	private Direccion direccion;
 	
 	public Empleado() {
 
@@ -70,9 +77,17 @@ public class Empleado implements Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
+	public Direccion getDireccion() {
+		return direccion;
+	}
+	
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
+
 	@Override
 	public String toString() {
 		return "Empleado [codigo=" + codigo + ", apellidos=" + apellidos + ", nombre=" + nombre + ", fechaNacimiento="
-				+ fechaNacimiento + "]";
-	}	
+				+ fechaNacimiento + ", direccion=" + direccion + "]";
+	}
 }
